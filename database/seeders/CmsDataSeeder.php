@@ -15,7 +15,7 @@ class CmsDataSeeder extends Seeder
             'title' => 'O desafio da vez é',
             'subtitle' => 'Terraplanagem sustentavel',
             'bg_image_path' => Storage::path('Vitrine.png'),
-            'content' => fake()->paragraph(3),
+            'content' => fake()->paragraph(3)
         ]);
     }
 }

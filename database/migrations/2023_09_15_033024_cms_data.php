@@ -17,16 +17,6 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('bg_image_path');
             $table->text('content');
-            $table->string('docpath_1')->nullable();
-            $table->string('docpath_2')->nullable();
-            $table->string('docpath_3')->nullable();
-            $table->string('docpath_4')->nullable();
-            $table->string('docpath_5')->nullable();
-            $table->string('docpath_6')->nullable();
-            $table->string('docpath_7')->nullable();
-            $table->string('docpath_8')->nullable();
-            $table->string('docpath_9')->nullable();
-            $table->string('docpath_10')->nullable();
         });
     }
 
