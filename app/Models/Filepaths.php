@@ -28,4 +28,11 @@ class Filepaths extends Model
         $deleted = self::where('id', $id)->delete();
         return $deleted;
     }
+
+    public function validateFields($data)
+    {
+        return $data->([
+            'file' => 'required'
+        ]);
+    }
 }
