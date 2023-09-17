@@ -9,24 +9,26 @@ class CmsData extends Model
 {
     use HasFactory;
 
-    public function update($data)
+    public function update(array $attributes = [], array $options = [])
     {
-        $cms_data = new self::find(1);
-        $cms_data->fill($request);
-        $cms_data->$save;
+        $model = new self;
+        $cms_data = $model->find(1);
+        $cms_data->fill($attributes);
+        $cms_data->save();
 
         return $cms_data;
     }
 
     public function fetchCmsData()
     {
-        $cms_data = new self::find(1)
-        return $cms_data;
+        $model = new self;
+        $cms_data = $model->first();
+        return $cms_data->attributes;
     }
 
     public function validateFields($data)
     {
-        return $data->([
+        return $data->validate([
             'title' => 'required|max:255',
             'subtitle' => 'required|max:255',
             'content' => 'required',
