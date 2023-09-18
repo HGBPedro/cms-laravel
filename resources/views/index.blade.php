@@ -36,7 +36,7 @@
             <h3 class='about__title'>Sobre o desafio</h3>
             <p>{{ $cms['content'] }}</p>
         </div>
-        <div class='support-files' id='support_files'>
+        <div class='support-files' id='support-files'>
             <h3 class='support-files__title'>Documentos de suporte</h3>
             <div id="carousel-container" class="carousel-container">
                 <div id="prev-button" class="pagination-arrow left" onclick="previousPage()">◄</div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CmsDataController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,6 @@ use App\Http\Controllers\CmsDataController;
 */
 
 Route::get('/', [CmsDataController::class, 'index']);
+Route::get('/admin/home', [CmsDataController::class, 'indexManagement']);
+Route::get('/admin', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);

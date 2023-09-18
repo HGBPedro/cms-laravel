@@ -24,6 +24,19 @@ class CmsDataController extends Controller
         return view('index')->with('cms', $cms)->with('bgImage', $bgImage)->with('filepaths', $filepaths);
     }
 
+    public function indexManagement ()
+    {
+        $cmsModel = new CmsData();
+        $filepathsModel = new Filepaths();
+        $filepaths = $filepathsModel->fetchAll();
+        $cms = $cmsModel->fetchCmsData();
+        $fileParts = explode('/', $cms['bg_image_path']);
+        $fileName = array_pop($fileParts);
+        $bgImage = Storage::url($fileName);
+
+        return view('adminHome')->with('cms', $cms)->with('bgImage', $bgImage)->with('filepaths', $filepaths);
+    }
+
     public function updateMainData(Request $request): RedirectResponse
     {
         $filepath = $request->bgImage->store('public');

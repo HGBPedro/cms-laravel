@@ -1,11 +1,14 @@
 @import './navbar.css';
 @import './index.css';
+@import './login.css';
 
 :root {
     --primary-color: #1A374D;
 }
 
 body {
+    font-family: Figtree, sans-serif;
+    box-sizing: border-box;
     display: block;
-    height:100%;
+    margin: 0;
 }

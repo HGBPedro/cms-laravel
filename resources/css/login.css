@@ -1,0 +1,40 @@
+.login {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+
+    .login__icon {
+        margin-bottom: 2.5rem;
+        width: 25rem;
+    }
+
+    .login__field {
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 1.25rem;
+    }
+
+    .login__input {
+        border: 1px solid var(--primary-color);
+        font-size: 16px;
+        height: 2.5rem;
+    }
+
+    .login__button {
+        background-color: var(--primary-color);
+        border: 0;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        height: 3rem;
+        transition: all 0.5s;
+        width: 100%;
+    }
+
+    .login__button:hover {
+        opacity: 0.6;
+    }
+}
