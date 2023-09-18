@@ -7,6 +7,12 @@ use App\Models\Filepaths;
 
 class FilepathsController extends Controller
 {
+    public function fetchAllFilepaths()
+    {
+        $model = new Filepaths();
+        return $model->getAll();
+    }
+
     public function createFilepath(Request $request): RedirectResponse
     {
         $filepath = $request->file->store('/');

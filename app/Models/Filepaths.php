@@ -11,7 +11,8 @@ class Filepaths extends Model
 
     public function fetchAll()
     {
-        return self::getAll();
+        $filepath = new self;
+        return $filepath->all();
     }
 
     public function store($data)
@@ -23,7 +24,7 @@ class Filepaths extends Model
         return $filepath;
     }
 
-    public funciton delete($id)
+    public function deleteFilepath($id)
     {
         $deleted = self::where('id', $id)->delete();
         return $deleted;
@@ -31,7 +32,7 @@ class Filepaths extends Model
 
     public function validateFields($data)
     {
-        return $data->([
+        return $data->validate([
             'file' => 'required'
         ]);
     }

@@ -1,0 +1,11 @@
+@import './navbar.css';
+@import './index.css';
+
+:root {
+    --primary-color: #1A374D;
+}
+
+body {
+    display: block;
+    height:100%;
+}

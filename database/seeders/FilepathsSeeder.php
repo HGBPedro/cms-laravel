@@ -12,25 +12,25 @@ class FilepathsSeeder extends Seeder
     public function run(): void
     {
         DB::table('filepaths')->insert([
-            'filepath' => Storage::path('samplePDF1.pdf'),
+            'filepath' => Storage::url('samplePDF1.pdf'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('filepaths')->insert([
-            'filepath' => Storage::path('samplePDF2.pdf'),
+            'filepath' => Storage::url('samplePDF2.pdf'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('filepaths')->insert([
-            'filepath' => Storage::path('sampleDOC1.docx'),
+            'filepath' => Storage::url('sampleDOC1.docx'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('filepaths')->insert([
-            'filepath' => Storage::path('sampleDOC2.doc'),
+            'filepath' => Storage::url('sampleDOC2.doc'),
             'created_at' => now(),
             'updated_at' => now()
         ]);
