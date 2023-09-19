@@ -1,0 +1,37 @@
+.logs {
+    .logs__header {
+        color: var(--primary-color);
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .logs__row {
+        border: 1.5px solid var(--form-section-header);
+    }
+
+    .logs__table-header {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .logs__info, .logs__table-header {
+        padding: 0.5rem 1rem;
+    }
+
+    .logs__table {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .logs__info--long {
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .flex {
+        display: flex;
+        gap: 0.8rem;
+    }
+}

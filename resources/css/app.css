@@ -2,6 +2,7 @@
 @import './index.css';
 @import './login.css';
 @import './admin.css';
+@import './logs.css';
 
 :root {
     --primary-color: #1A374D;

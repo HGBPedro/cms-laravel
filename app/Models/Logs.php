@@ -9,7 +9,7 @@ class Logs extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['change', 'user_id', 'value'];
+    protected $fillable = ['change', 'user_id', 'user_name', 'value'];
 
     public function createNewLog($data)
     {
@@ -23,6 +23,8 @@ class Logs extends Model
 
     public function getAll()
     {
-        return self::getAll();
+        $log = new self;
+
+        return $log->simplePaginate(3);
     }
 }

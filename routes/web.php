@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CmsDataController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FilepathsController;
+use App\Http\Controllers\LogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,5 @@ Route::get('/cms/filepath/delete/{id}', function (string $id) {
 
     return $controller->deleteFilepath($id);
 });
+Route::get('/admin/logs', [LogController::class, 'index']);
 
