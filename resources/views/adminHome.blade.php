@@ -50,6 +50,38 @@
             </button>
         </div>
         </form>
+
+        <div class="cms-form__filepaths">
+        <form method='POST' action='/cms/filepath/upload' enctype="multipart/form-data">
+        @csrf
+        <h4 class="cms-form__section-header">Arquivos de suporte</h4>
+        <label class="cms-form__sup-file">
+            <input class="cms-form__sup-file--upload" name="file" type="file" onchange="this.form.submit()"/>
+            Upload de novo documento
+        </label>
+        @error('content')
+            <span class="alert">{{ $message }}</span>
+        @enderror
+        </form>
+
+        @isset($filepaths)
+            <div class="cms-form__filepaths-list">
+                @foreach ($filepaths as $file)
+                    <div class="cms-form__sup-file-item">
+                        <b>{{ pathinfo(asset($file['filepath']), PATHINFO_FILENAME) }}</b>
+                        <div>
+                        <a href="{{ $file['filepath'] }}" target="_blank" class="cms-form__sup-file-item-button">
+                            Download
+                        </a>
+                        <a href="/cms/filepath/delete/{{ $file['id'] }}" class="cms-form__sup-file-item-button">
+                            Excluir
+                        </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            @endisset
+        </div>
     </div>
 
     <script>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Filepaths;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class FilepathsController extends Controller
 {
@@ -15,26 +17,26 @@ class FilepathsController extends Controller
 
     public function createFilepath(Request $request): RedirectResponse
     {
-        $filepath = $request->file->store('/');
         $model = new Filepaths();
+        $model->validateFields($request);
+        $filepath = $request->file('file')->storeAs('/', $request->file('file')->getClientOriginalName(), 'public');
 
-        $model->validateFields($requests);
         $model->store([
-            'filepath' => $filepath,
+            'filepath' => Storage::url($filepath),
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
-        return redirect('/admin');
+        return redirect('/admin/home');
     }
 
 
     public function deleteFilepath($id): RedirectResponse
     {
 
-        $model = newFilepaths();
-        $model->delete($id);
+        $model = new Filepaths();
+        $model->deleteFilepath($id);
 
-        return redirect('/admin');
+        return redirect('/admin/home');
     }
 }

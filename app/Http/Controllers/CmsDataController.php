@@ -44,19 +44,18 @@ class CmsDataController extends Controller
     {
         $model = new CmsData();
         if ($request->hasFile('bgImage')) {
-            $filepath = $request->file('bgImage')->storeAs('/', pathinfo($request->file('bgImage'), PATHINFO_FILENAME), 'public');
+            $filepath = $request->file('bgImage')->storeAs('/', $request->file('bgImage')->getClientOriginalName(), 'public');
         } else {
             $ogItem = $model->fetchCmsData();
             $fileParts = explode('/', $ogItem['bg_image_path']);
-            $fileName = array_pop($fileParts);
-            $filepath = Storage::url($fileName);
+            $filepath = array_pop($fileParts);
         }
 
         $model->validateFields($request);
         $model->update([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
-            'bg_image_path' => $filepath,
+            'bg_image_path' => Storage::url($filepath),
             'content' => $request->content
         ]);
 

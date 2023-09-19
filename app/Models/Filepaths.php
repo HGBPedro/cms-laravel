@@ -9,6 +9,8 @@ class Filepaths extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['filepath'];
+
     public function fetchAll()
     {
         $filepath = new self;
@@ -20,13 +22,16 @@ class Filepaths extends Model
         $filepath = new self;
 
         $filepath->fill($data);
+        $filepath->save();
 
         return $filepath;
     }
 
     public function deleteFilepath($id)
     {
-        $deleted = self::where('id', $id)->delete();
+        $model = new self();
+
+        $deleted = $model->where('id', $id)->delete();
         return $deleted;
     }
 
