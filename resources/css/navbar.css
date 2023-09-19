@@ -16,3 +16,42 @@
         gap: 0.8rem;
     }
 }
+
+.menu {
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 22.25rem;
+
+    .menu__header {
+        font-size: 24px;
+        font-width: bold;
+        margin: 2rem 0;
+    }
+
+    .menu__logout {
+        text-decoration: underline;
+        margin-bottom: 4rem;
+    }
+
+    .menu__item {
+        align-items: center;
+        display: flex;
+        font-size: 17px;
+        gap: 0.8rem;
+        height: 4rem;
+        justify-content: flex-start;
+        padding: 1rem 1.5rem;
+        width: 100%;
+    }
+
+    .menu__logout, .menu__item {
+        transition: all 0.5s ease;
+    }
+
+    .menu__item:hover, .menu__logout:hover {
+        opacity: 0.4;
+    }
+}

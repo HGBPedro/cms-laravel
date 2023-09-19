@@ -12,3 +12,12 @@ body {
     display: block;
     margin: 0;
 }
+
+.auth-layout {
+    display: flex;
+    height: 100vh;
+
+    .content {
+        padding: 1rem;
+    }
+}

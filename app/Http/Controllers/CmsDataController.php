@@ -8,6 +8,7 @@ use App\Models\CmsData;
 use App\Models\Filepaths;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class CmsDataController extends Controller
 {
@@ -26,6 +27,8 @@ class CmsDataController extends Controller
 
     public function indexManagement ()
     {
+        if (!Auth::check()) return view('login');
+
         $cmsModel = new CmsData();
         $filepathsModel = new Filepaths();
         $filepaths = $filepathsModel->fetchAll();
