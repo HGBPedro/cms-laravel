@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Logs;
 use App\Jobs\SendLogEmail;
+use Illuminate\Support\Facades\Auth;
 
 class LogController extends Controller
 {
     public function index () {
+        if (!Auth::check()) return view('login');
         $model = new Logs();
 
         $logs = $model->getAll();
