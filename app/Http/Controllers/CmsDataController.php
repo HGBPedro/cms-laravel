@@ -42,10 +42,17 @@ class CmsDataController extends Controller
 
     public function updateMainData(Request $request): RedirectResponse
     {
-        $filepath = $request->bgImage->store('public');
         $model = new CmsData();
+        if ($request->hasFile('bgImage')) {
+            $filepath = $request->file('bgImage')->storeAs('/', pathinfo($request->file('bgImage'), PATHINFO_FILENAME), 'public');
+        } else {
+            $ogItem = $model->fetchCmsData();
+            $fileParts = explode('/', $ogItem['bg_image_path']);
+            $fileName = array_pop($fileParts);
+            $filepath = Storage::url($fileName);
+        }
 
-        $model->validateFields($requests);
+        $model->validateFields($request);
         $model->update([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
@@ -53,6 +60,6 @@ class CmsDataController extends Controller
             'content' => $request->content
         ]);
 
-        return redirect('/admin');
+        return redirect('/admin/home');
     }
 }

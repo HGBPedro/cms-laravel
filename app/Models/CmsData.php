@@ -9,6 +9,8 @@ class CmsData extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'subtitle', 'bg_image_path', 'content'];
+
     public function update(array $attributes = [], array $options = [])
     {
         $model = new self;
@@ -32,7 +34,6 @@ class CmsData extends Model
             'title' => 'required|max:255',
             'subtitle' => 'required|max:255',
             'content' => 'required',
-            'bg_image_path' => 'required'
         ]);
     }
 }

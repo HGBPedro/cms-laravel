@@ -20,4 +20,5 @@ Route::get('/admin/home', [CmsDataController::class, 'indexManagement']);
 Route::get('/admin', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/cms/update', [CmsDataController::class, 'updateMainData']);
 
