@@ -15,8 +15,7 @@ class LogsFactory extends Factory
         return [
             'change' => 'Subtítulo atualizado',
             'user_id' => User::factory(),
-            'old-value' => fake()->paragraph(),
-            'new-value' => fake()->paragraph(),
+            'value' => fake()->paragraph(),
             'created_at' => now(),
             'updated_at' => now()
         ];

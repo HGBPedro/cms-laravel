@@ -9,9 +9,9 @@ class Logs extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['change', 'user_id', 'old-value', 'new-value'];
+    protected $fillable = ['change', 'user_id', 'value'];
 
-    public function store($data)
+    public function createNewLog($data)
     {
         $log = new self;
 

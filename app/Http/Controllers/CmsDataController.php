@@ -9,6 +9,7 @@ use App\Models\Filepaths;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\LogController;
 
 class CmsDataController extends Controller
 {
@@ -43,10 +44,10 @@ class CmsDataController extends Controller
     public function updateMainData(Request $request): RedirectResponse
     {
         $model = new CmsData();
+        $ogItem = $model->fetchCmsData();
         if ($request->hasFile('bgImage')) {
             $filepath = $request->file('bgImage')->storeAs('/', $request->file('bgImage')->getClientOriginalName(), 'public');
         } else {
-            $ogItem = $model->fetchCmsData();
             $fileParts = explode('/', $ogItem['bg_image_path']);
             $filepath = array_pop($fileParts);
         }
@@ -59,6 +60,31 @@ class CmsDataController extends Controller
             'content' => $request->content
         ]);
 
+        self::createLogs($request, $ogItem);
+
         return redirect('/admin/home');
+    }
+
+    public function createLogs (Request $request, $ogItem)
+    {
+        $logController = new LogController();
+
+        if (strcmp($request->title, $ogItem['title']) != 0) {
+            $logController->createLog('Título alterado', $request->title);
+        }
+
+        if (strcmp($request->subtitle, $ogItem['subtitle']) != 0) {
+            $logController->createLog('Subtítulo alterado', $request->subtitle);
+        }
+
+        if (strcmp($request->content, $ogItem['content']) != 0) {
+            $logController->createLog('Conteúdo alterado', $request->content);
+        }
+
+        if ($request->hasFile('bgImage')) {
+            $logController->createLog('Imagem de fundo alterada', Storage::url($ogItem['bg_image_path']));
+        }
+
+        return;
     }
 }

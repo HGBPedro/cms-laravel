@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('change');
             $table->foreignId('user_id');
-            $table->text('old-value');
-            $table->text('new-value');
+            $table->text('value');
             $table->timestamps();
         });
     }
