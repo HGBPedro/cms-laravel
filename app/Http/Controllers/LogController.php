@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Logs;
+use App\Jobs\SendLogEmail;
 
 class LogController extends Controller
 {
@@ -28,6 +29,7 @@ class LogController extends Controller
         ];
 
         $model = new Logs();
+        SendLogEmail::dispatch($logData);
         return $model->createNewLog($logData);
     }
 }

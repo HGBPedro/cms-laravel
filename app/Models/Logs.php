@@ -25,6 +25,6 @@ class Logs extends Model
     {
         $log = new self;
 
-        return $log->simplePaginate(3);
+        return $log->simplePaginate(20);
     }
 }
